@@ -6,7 +6,7 @@ This is a fork of jQuery 2.2.4 with the following security patches applied:
 
 
 ```
-npm install @tnwebpro/jquery-2.2.4-patched
+npm install @tnwebpro/jquery
 ```
 
 --------------------------------------
