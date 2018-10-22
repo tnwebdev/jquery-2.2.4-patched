@@ -1,3 +1,17 @@
+This is a fork of jQuery 2.2.4 with the following security patches applied:
+
+* [Adjust jQuery('html') detection to only match when html starts with '<' (not counting space characters). Fixes #11290.](https://github.com/jquery/jquery/commit/05531fc4080ae24070930d15ae0cea7ae056457d)
+
+* [Ajax: Mitigate possible XSS vulnerability](https://github.com/jquery/jquery/commit/f60729f3903d17917dc351f3ac87794de379b0cc)
+
+
+```
+npm install @tnwebpro/jquery-2.2.4-patched
+```
+
+--------------------------------------
+
+
 [jQuery](http://jquery.com/) — New Wave JavaScript
 ==================================================
 

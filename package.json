@@ -1,17 +1,17 @@
 {
-  "name": "jquery",
-  "title": "jQuery",
-  "description": "JavaScript library for DOM operations",
+  "name": "@tnwebpro/jquery-2.2.4-patched",
+  "title": "jQuery 2.2.4 Patched",
+  "description": "jQuery 2.2.4 + vulnerability patches",
   "version": "2.2.4",
   "main": "dist/jquery.js",
-  "homepage": "http://jquery.com",
+  "homepage": "https://github.com/tnwebdev/jquery-2.2.4-patched",
   "author": {
     "name": "jQuery Foundation and other contributors",
-    "url": "https://github.com/jquery/jquery/blob/2.2.4/AUTHORS.txt"
+    "url": "https://github.com/tnwebdev/jquery-2.2.4-patched/blob/master/AUTHORS.txt"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jquery/jquery.git"
+    "url": "https://github.com/tnwebdev/jquery-2.2.4-patched.git"
   },
   "keywords": [
     "jquery",
@@ -20,7 +20,7 @@
     "library"
   ],
   "bugs": {
-    "url": "https://github.com/jquery/jquery/issues"
+    "url": "https://github.com/tnwebdev/jquery-2.2.4-patched/issues"
   },
   "license": "MIT",
   "dependencies": {},

@@ -9,7 +9,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2016-05-20T17:23Z
+ * Date: 2018-10-22T18:54Z
  */
 
 (function( global, factory ) {
@@ -2827,7 +2827,7 @@ var rootjQuery,
 	// A simple way to check for HTML strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
 	// Strict HTML recognition (#11290: must start with <)
-	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
+	rquickExpr = /^(?:(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
 	init = jQuery.fn.init = function( selector, context, root ) {
 		var match, elem;
@@ -9193,6 +9193,13 @@ jQuery.ajaxTransport( function( options ) {
 
 
 
+
+// Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
+jQuery.ajaxPrefilter( function( s ) {
+	if ( s.crossDomain ) {
+		s.contents.script = false;
+	}
+} );
 
 // Install script dataType
 jQuery.ajaxSetup( {
