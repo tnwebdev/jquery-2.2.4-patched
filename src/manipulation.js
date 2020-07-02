@@ -226,7 +226,12 @@ function remove( elem, selector, keepData ) {
 
 jQuery.extend( {
 	htmlPrefilter: function( html ) {
-		return html.replace( rxhtmlTag, "<$1></$2>" );
+
+		// Fix XSS vulnerability
+		// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11022
+		// https://github.com/jquery/jquery/security/advisories/GHSA-gxr4-xjj5-5px2
+		// https://github.com/jquery/jquery/commit/90fed4b453a5becdb7f173d9e3c1492390a1441f
+		return html;
 	},
 
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
