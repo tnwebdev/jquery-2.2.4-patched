@@ -9,7 +9,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2018-10-22T18:54Z
+ * Date: 2020-07-02T13:34Z
  */
 
 (function( global, factory ) {
@@ -210,7 +210,11 @@ jQuery.extend = jQuery.fn.extend = function() {
 				copy = options[ name ];
 
 				// Prevent never-ending loop
-				if ( target === copy ) {
+				// Prevent Object.prototype pollution
+				// https://www.cvedetails.com/cve/CVE-2019-11358/
+				// https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b
+				// https://www.privacy-wise.com/mitigating-cve-2019-11358-in-old-versions-of-jquery/
+				if ( name === "__proto__" || target === copy ) {
 					continue;
 				}
 
@@ -5121,13 +5125,12 @@ jQuery.fn.extend( {
 } );
 
 
-var
-	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:-]+)[^>]*)\/>/gi,
+	//NOT NEEDED ANYMORE: rxhtmlTag
 
 	// Support: IE 10-11, Edge 10240+
 	// In IE/Edge using regex groups here causes severe slowdowns.
 	// See https://connect.microsoft.com/IE/feedback/details/1736512/
-	rnoInnerhtml = /<script|<style|<link/i,
+	var rnoInnerhtml = /<script|<style|<link/i,
 
 	// checked="checked" or checked
 	rchecked = /checked\s*(?:[^=]|=\s*.checked.)/i,
@@ -5322,7 +5325,12 @@ function remove( elem, selector, keepData ) {
 
 jQuery.extend( {
 	htmlPrefilter: function( html ) {
-		return html.replace( rxhtmlTag, "<$1></$2>" );
+
+		// Fix XSS vulnerability
+		// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11022
+		// https://github.com/jquery/jquery/security/advisories/GHSA-gxr4-xjj5-5px2
+		// https://github.com/jquery/jquery/commit/90fed4b453a5becdb7f173d9e3c1492390a1441f
+		return html;
 	},
 
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
@@ -9195,6 +9203,8 @@ jQuery.ajaxTransport( function( options ) {
 
 
 // Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
+// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-9251
+// https://github.com/jquery/jquery/commit/f60729f3903d17917dc351f3ac87794de379b0cc
 jQuery.ajaxPrefilter( function( s ) {
 	if ( s.crossDomain ) {
 		s.contents.script = false;
