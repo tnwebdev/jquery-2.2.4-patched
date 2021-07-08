@@ -2,7 +2,7 @@
   "name": "@tnwebpro/jquery",
   "title": "jQuery 2.2.4 Patched",
   "description": "jQuery 2.2.4 + vulnerability patches",
-  "version": "2.2.4",
+  "version": "3.0.0",
   "main": "dist/jquery.js",
   "homepage": "https://github.com/tnwebdev/jquery-2.2.4-patched",
   "author": {
