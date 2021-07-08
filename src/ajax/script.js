@@ -5,6 +5,8 @@ define( [
 ], function( jQuery, document ) {
 
 // Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
+// https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-9251
+// https://github.com/jquery/jquery/commit/f60729f3903d17917dc351f3ac87794de379b0cc
 jQuery.ajaxPrefilter( function( s ) {
 	if ( s.crossDomain ) {
 		s.contents.script = false;

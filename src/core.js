@@ -157,7 +157,11 @@ jQuery.extend = jQuery.fn.extend = function() {
 				copy = options[ name ];
 
 				// Prevent never-ending loop
-				if ( target === copy ) {
+				// Prevent Object.prototype pollution
+				// https://www.cvedetails.com/cve/CVE-2019-11358/
+				// https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b
+				// https://www.privacy-wise.com/mitigating-cve-2019-11358-in-old-versions-of-jquery/
+				if ( name === "__proto__" || target === copy ) {
 					continue;
 				}
 

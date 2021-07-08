@@ -4,6 +4,9 @@ This is a fork of jQuery 2.2.4 with the following security patches applied:
 
 * [Ajax: Mitigate possible XSS vulnerability](https://github.com/jquery/jquery/commit/f60729f3903d17917dc351f3ac87794de379b0cc)
 
+* Prevent Object.prototype pollution on $.extend https://www.cvedetails.com/cve/CVE-2019-11358/
+
+* Prevent XSS vulnerability on $.htmlPrefilter https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11022
 
 ```
 npm install @tnwebpro/jquery
